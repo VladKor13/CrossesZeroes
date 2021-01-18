@@ -29,7 +29,7 @@ public class Application {
         //ACTIVITIES INIT
         addActivity(new MainMenuActivity("MainMenu"));
         addActivity(new GameActivity("Game"));
-        changeActivity(getActivity("MainMenu"));
+        changeActivity(getActivity("Game"));
     }
 
     public void addActivity(Activity activity){
@@ -51,14 +51,14 @@ public class Application {
     }
 
     public static void initActivity(){
-        frame.getContentPane().removeAll();
-
-        if(currentActivity != null) currentActivity.init(frame.getContentPane());
-
-        frame.revalidate();
-        frame.repaint();
+        if(currentActivity != null) {
+            frame.getContentPane().removeAll();
+            currentActivity.init(frame.getContentPane());
+            frame.revalidate();
+            frame.repaint();
+        }
     }
-    public void exitApp(){
-        this.frame.dispose();
+    public static void exitApp(){
+        frame.dispose();
     }
 }
