@@ -30,8 +30,7 @@ public class MainMenuActivity extends Activity {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println(Main.crossesZeroesGame.getActivity("Game"));
-//                A.changeActivity(Main.crossesZeroesGame.getActivity("Game"));
+                Application.changeActivity(Application.getActivity("Game"));
             }
         });
 

@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class Application {
 
-    private ArrayList<Activity> activities;
-    private Activity currentActivity;
-    private JFrame frame;
+    private static ArrayList<Activity> activities;
+    private static Activity currentActivity;
+    private static JFrame frame;
 
     public Application(){
         activities = new ArrayList<>();
@@ -30,15 +30,13 @@ public class Application {
         addActivity(new MainMenuActivity("MainMenu"));
         addActivity(new GameActivity("Game"));
         changeActivity(getActivity("MainMenu"));
-        System.out.println(activities);
-        System.out.println(currentActivity);
     }
 
     public void addActivity(Activity activity){
         activities.add(activity);
     }
 
-    public Activity getActivity(String activityID){
+    public static Activity getActivity(String activityID){
         for(Activity activity : activities){
             if(activity.getActivityID().equals(activityID)){
                 return activity;
@@ -47,12 +45,12 @@ public class Application {
         return null;
     }
 
-    public void changeActivity(Activity currentActivity){
-        this.currentActivity = currentActivity;
+    public static void changeActivity(Activity currentActivity){
+        Application.currentActivity = currentActivity;
         initActivity();
     }
 
-    public void initActivity(){
+    public static void initActivity(){
         frame.getContentPane().removeAll();
 
         if(currentActivity != null) currentActivity.init(frame.getContentPane());
